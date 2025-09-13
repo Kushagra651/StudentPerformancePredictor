@@ -1,0 +1,8 @@
+stages:
+  train:
+    cmd: python src/model_trainer.py --data notebook\data\stud.csv --out model.pkl
+    deps:
+    - notebook\data\stud.csv
+    - src/model_trainer.py
+    outs:
+    - model.pkl
