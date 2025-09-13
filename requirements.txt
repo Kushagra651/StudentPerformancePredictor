@@ -5,4 +5,8 @@ scikit-learn
 catboost
 xgboost
 dill
+flask
 # -e .
+streamlit
+mlflow
+dvc
