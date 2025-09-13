@@ -9,7 +9,7 @@ __pycache__/
 
 #artifacts folder
 catboost_info/
-/artifacts
+# /artifacts
 #environment
 newenv/
 
