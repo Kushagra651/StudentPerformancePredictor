@@ -14,12 +14,12 @@ stages:
       - artifacts/train.csv # Depends on the output of the previous stage
       - artifacts/test.csv  # Depends on the output of the previous stage
     outs:
-      - artifacts/preprocessor.pkl
+      - artifacts/proprocessor.pkl
 
   train:
     cmd: python -m src.components.model_trainer
     deps:
       - src/components/model_trainer.py
-      - artifacts/preprocessor.pkl # Depends on the output of the previous stage
+      - artifacts/proprocessor.pkl # Depends on the output of the previous stage
     outs:
       - artifacts/model.pkl

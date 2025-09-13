@@ -122,3 +122,13 @@ class DataTransformation:
             )
         except Exception as e:
             raise CustomException(e,sys)
+
+if __name__ == "__main__":
+    from src.components.data_transformation import DataTransformation
+    data_transformation = DataTransformation()
+    
+    # Provide the paths to your train and test CSVs
+    train_path = "artifacts/train.csv"  # update path if different
+    test_path = "artifacts/test.csv"    # update path if different
+    
+    data_transformation.initiate_data_transformation(train_path, test_path)
