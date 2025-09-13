@@ -94,7 +94,7 @@ class PredictPipeline:
         # We assume the artifacts folder is in the same directory as the Streamlit app
         artifacts_path = os.path.join(os.path.dirname(__file__), 'artifacts')
         self.model_path = os.path.join(artifacts_path, "model.pkl")
-        self.preprocessor_path = os.path.join(artifacts_path, 'preprocessor.pkl')
+        self.preprocessor_path = os.path.join(artifacts_path, 'proprocessor.pkl')
 
     def predict(self, features):
         try:
