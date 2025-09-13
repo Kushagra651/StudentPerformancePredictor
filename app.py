@@ -132,7 +132,7 @@ with st.container():
 # --- Embed DagsHub Pipeline ---
 
 st.header("ML Pipeline DAG")
-dag_image_path = r"C:\Users\ASUS\Desktop\gujju_home_ml_project\image_pipeline.jpg"
+dag_image_path = r"image_pipeline.jpg"
 
 # Display the image
 st.image(dag_image_path, caption="DVC Pipeline DAG", use_container_width=True)
