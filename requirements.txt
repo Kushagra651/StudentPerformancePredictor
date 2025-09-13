@@ -10,3 +10,4 @@ flask
 streamlit
 mlflow
 dvc
+altair
