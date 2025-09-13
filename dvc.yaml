@@ -1,9 +1,25 @@
 stages:
-  train:
-    cmd: python src\components\model_trainer.py --data notebook\data\stud.csv --out
-      model.pkl
+  data_ingestion:
+    cmd: python -m src.components.data_ingestion
     deps:
-    - notebook\data\stud.csv
-    - src\components\model_trainer.py
+      - src/components/data_ingestion.py
     outs:
-    - model.pkl
+      - artifacts/train.csv
+      - artifacts/test.csv
+
+  data_transformation:
+    cmd: python -m src.components.data_transformation
+    deps:
+      - src/components/data_transformation.py
+      - artifacts/train.csv # Depends on the output of the previous stage
+      - artifacts/test.csv  # Depends on the output of the previous stage
+    outs:
+      - artifacts/preprocessor.pkl
+
+  train:
+    cmd: python -m src.components.model_trainer
+    deps:
+      - src/components/model_trainer.py
+      - artifacts/preprocessor.pkl # Depends on the output of the previous stage
+    outs:
+      - artifacts/model.pkl

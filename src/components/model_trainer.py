@@ -19,6 +19,8 @@ from src.logger import logging
 
 from src.utils import save_object,evaluate_models
 
+print("--- SCRIPT IS RUNNING ---")
+
 @dataclass
 class ModelTrainerConfig:
     trained_model_file_path=os.path.join("artifacts","model.pkl")
@@ -117,3 +119,21 @@ class ModelTrainer:
             
         except Exception as e:
             raise CustomException(e,sys)
+        
+if __name__=="__main__":
+    # First, we need to get the data from the previous pipeline steps
+    from src.components.data_ingestion import DataIngestion
+    from src.components.data_transformation import DataTransformation
+
+    # Run Data Ingestion
+    ingestion = DataIngestion()
+    train_data_path, test_data_path = ingestion.initiate_data_ingestion()
+
+    # Run Data Transformation
+    transformation = DataTransformation()
+    train_array, test_array, _ = transformation.initiate_data_transformation(train_data_path, test_data_path)
+
+    # Now, start the Model Training
+    trainer = ModelTrainer()
+    r2_score = trainer.initiate_model_trainer(train_array, test_array)
+    print(f"The R2 score of the best model is: {r2_score}")
